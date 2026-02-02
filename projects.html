@@ -19,30 +19,68 @@
         <a href="index.html" class="nav-btn">Главная</a>
         <a href="projects.html" class="nav-btn active">Проекты</a>
         <a href="https://t.me/rttOSrtt" target="_blank" class="nav-btn tg-btn">Мой ТГК</a>
+        <a href="https://t.me/roman_tech_talk" target="_blank" class="nav-btn tg-btn">Личное сообщение</a>
     </nav>
 
     <main>
         <section class="project-card">
             <h2>Windows XPV (Vista Edition)</h2>
-            <p>Моя кастомная сборка WinXP. Стиль Windows Vista,современный веб и запуск нового софта</p>
-            <a href="#" class="more-btn">Подробнее</a>
+            <p>Моя кастомная сборка WinXP. Стиль Windows Vista, современный веб и запуск нового софта</p>
+            <a href="project-xpv.html" class="more-btn">Подробнее</a>
         </section>
 
         <section class="project-card">
             <h2>Cube OS</h2>
             <p>Моя будущая ОС. Объемность, стеклянность и стили Frutiger Aero/Aurora/Dark</p>
-            <a href="#" class="more-btn">Подробнее</a>
+            <a href="cubeos.html" class="more-btn">Подробнее</a>
         </section>
 
         <section class="project-card">
             <h2>VistaSounds.exe</h2>
             <p>Программа для быстрой замены звуковой схемы Windows XP на звуки из Vista.</p>
-            <a href="#" class="more-btn">Подробнее</a>
+            <a href="appvs.html" class="more-btn">Подробнее</a>
         </section>
+        
+        <section class="project-card">
+            <h2>unnamed</h2>
+            <p>unnamed</p>
+            <a href="#" class="more-btn">Подробнее</a>
     </main>
 
     <footer>
         <p>Copyright © 2026 CubeWEB Lab. All rights reserved.</p>
     </footer>
+
+    <!-- КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ -->
+    <button class="theme-toggle" id="theme-toggle" title="Сменить тему">
+        <span id="theme-icon">🌙</span>
+    </button>
+
+    <!-- СКРИПТ ЛОГИКИ ТЕМЫ -->
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme');
+        
+        if (savedTheme === 'dark') {
+            htmlElement.setAttribute('data-theme', 'dark');
+            themeIcon.textContent = '☀️';
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            const isDark = htmlElement.hasAttribute('data-theme');
+            if (isDark) {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeIcon.textContent = '🌙';
+            } else {
+                htmlElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.textContent = '☀️';
+            }
+        });
+    </script>
 </body>
 </html>

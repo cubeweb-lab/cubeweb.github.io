@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-        <header>
+    <header>
         <img src="logo2.jpg" alt="Logo">
         <div>
             <h1>CubeWEB</h1>
@@ -15,16 +15,15 @@
         </div>
     </header>
 
-    <!-- ВОТ ЭТО МЕНЮ -->
+    <!-- МЕНЮ -->
     <nav class="glass-menu">
         <a href="index.html" class="nav-btn active">Главная</a>
         <a href="projects.html" class="nav-btn">Проекты</a>
         <a href="https://t.me/rttOSrtt" target="_blank" class="nav-btn tg-btn">Мой ТГК</a>
+        <a href="https://t.me/roman_tech_talk" target="_blank" class="nav-btn tg-btn">Личное сообщение</a>
     </nav>
 
     <main>
-        <!-- Твой контент -->
-    </main>
         <section>
             <h2>Привет, мир CubeWEB!</h2>
             <p>Добро пожаловать на мой официальный сайт. Здесь скоро появятся мои проекты!</p>
@@ -37,9 +36,50 @@
             <p>Работа кипит, DLL-ки патчатся!</p>
         </section>
     </main>
+    
+    
 
     <footer>
         <p>Copyright © 2026 CubeWEB Lab. All rights reserved.</p>
     </footer>
+
+    <!-- КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ -->
+    <button class="theme-toggle" id="theme-toggle" title="Сменить тему">
+        <span id="theme-icon">🌙</span>
+    </button>
+
+    <!-- СКРИПТ ЛОГИКИ ТЕМЫ -->
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
+
+        // 1. При загрузке проверяем сохраненную тему в браузере
+        const savedTheme = localStorage.getItem('theme');
+        
+        if (savedTheme === 'dark') {
+            htmlElement.setAttribute('data-theme', 'dark');
+            themeIcon.textContent = '☀️'; // Солнце для перехода в светлую
+        } else {
+            themeIcon.textContent = '🌙'; // Луна для перехода в темную
+        }
+
+        // 2. Обработка нажатия на кнопку
+        toggleBtn.addEventListener('click', () => {
+            const isDark = htmlElement.hasAttribute('data-theme');
+            
+            if (isDark) {
+                // Выключаем темную тему
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeIcon.textContent = '🌙';
+            } else {
+                // Включаем темную тему
+                htmlElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.textContent = '☀️';
+            }
+        });
+    </script>
 </body>
 </html>

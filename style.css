@@ -1,26 +1,62 @@
-/* Обнуляем стандартные отступы браузера */
+/* ПЕРЕМЕННЫЕ ЦВЕТОВ */
+:root {
+    /* Светлая тема (стандартная) */
+    --bg-body: #e0e6ed;
+    --bg-header: linear-gradient(to bottom, #d2e4f0 0%, #ffffff 50%, #e1eef6 100%);
+    --header-border: #a0b8d0;
+    --header-text: #2b5797;
+    --sub-text: #556677;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --card-border: #ffffff;
+    --text-color: #333;
+    --btn-bg: linear-gradient(to bottom, #ffffff 0%, #e1eef6 100%);
+    --btn-text: #2b5797;
+    --title-color: #0078d4;
+    --download-color: #5BE046;
+    --footer-bg: linear-gradient(to right, #2b5797, #0078d4);
+}
+
+[data-theme="dark"] {
+    /* Темная тема (глубокий синий/черный в стиле Vista Dark) */
+    --bg-body: #111418;
+    --bg-header: linear-gradient(to bottom, #1e293b 0%, #0a0f1a 100%);
+    --header-border: #2d3e50;
+    --header-text: #60a5fa;
+    --sub-text: #94a3b8;
+    --card-bg: rgba(30, 41, 59, 0.6);
+    --card-border: #334155;
+    --text-color: #e2e8f0;
+    --btn-bg: linear-gradient(to bottom, #334155 0%, #1e293b 100%);
+    --btn-text: #f1f5f9;
+    --title-color: #38bdf8;
+    --footer-bg: linear-gradient(to right, #0f172a, #1e293b);
+}
+
+/* ОБНУЛЕНИЕ И БАЗОВЫЕ СТИЛИ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* Плавный переход всех цветов при смене темы */
+    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 body {
-    background-color: #e0e6ed; /* Светло-голубоватый фон в стиле Win7 */
+    background-color: var(--bg-body);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
+    color: var(--text-color);
     line-height: 1.6;
 }
 
-/* Шапка сайта (Header) */
+/* ШАПКА (HEADER) */
 header {
-    background: linear-gradient(to bottom, #d2e4f0 0%, #ffffff 50%, #e1eef6 100%);
+    background: var(--bg-header);
     padding: 20px;
-    border-bottom: 2px solid #a0b8d0;
+    border-bottom: 2px solid var(--header-border);
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
-    justify-content: center; /* Центрируем всё содержимое */
+    justify-content: center;
 }
 
 header img {
@@ -28,79 +64,24 @@ header img {
     height: 70px;
     margin-right: 20px;
     border-radius: 12px;
-    /* Эффект глянца на логотипе */
     border: 1px solid rgba(255,255,255,0.8);
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 header h1 {
-    color: #2b5797;
+    color: var(--header-text);
     font-size: 2.2rem;
-    text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.3);
     margin: 0;
 }
 
 header p {
-    color: #556677;
+    color: var(--sub-text);
     font-size: 1rem;
     margin: 0;
 }
 
-/* Основной контент */
-main {
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 0 20px;
-}
-
-/* Стили для карточек/секций */
-section {
-    background: rgba(255, 255, 255, 0.7); /* Полупрозрачность для эффекта стекла */
-    backdrop-filter: blur(5px); /* Размытие заднего фона (если браузер потянет) */
-    border: 1px solid #ffffff;
-    padding: 25px;
-    margin-bottom: 25px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease; /* Анимация при наведении */
-}
-
-section:hover {
-    transform: translateY(-5px); /* Карточка чуть всплывает */
-}
-
-section h2 {
-    color: #0078d4;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-section p {
-    margin-bottom: 10px;
-}
-
-/* Подвал (Footer) */
-footer {
-    background: linear-gradient(to right, #2b5797, #0078d4);
-    color: white;
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    border-top: 3px solid #1e3a63;
-}
-
-/* Адаптив под мобилу */
-@media (max-width: 600px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-    }
-    header img {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-}
-/* Контейнер для меню */
+/* НАВИГАЦИЯ (МЕНЮ) */
 .glass-menu {
     display: flex;
     justify-content: center;
@@ -110,92 +91,152 @@ footer {
     padding: 0 20px;
 }
 
-/* Базовый стиль кнопок */
 .nav-btn {
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 20px;
     font-weight: 600;
-    color: #2b5797;
-    background: linear-gradient(to bottom, #ffffff 0%, #e1eef6 100%);
-    border: 1px solid #a0b8d0;
+    color: var(--btn-text);
+    background: var(--btn-bg);
+    border: 1px solid var(--header-border);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
     text-align: center;
 }
 
-/* Эффект при наведении */
 .nav-btn:hover {
-    transform: scale(1.05);
-    background: linear-gradient(to bottom, #f0f9ff 0%, #cbebff 100%);
-    box-shadow: 0 4px 12px rgba(0,120,212,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* Активная кнопка (на которой мы сейчас) */
 .nav-btn.active {
-    background: linear-gradient(to bottom, #0078d4 0%, #005a9e 100%);
+    border: 2px solid var(--title-color);
+}
+
+/* ОСНОВНОЙ КОНТЕНТ */
+main {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+section {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+section h2 {
+    color: var(--title-color);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* ПОДВАЛ (FOOTER) */
+footer {
+    background: var(--footer-bg);
     color: white;
-    border-color: #004578;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    border-top: 3px solid rgba(0,0,0,0.1);
 }
 
-/* Особенный стиль для ТГК */
-.tg-btn {
-    border-color: #24A1DE;
-    color: #24A1DE;
-}
-
-.tg-btn:hover {
-    background: #24A1DE;
+/* КНОПКА ПЕРЕКЛЮЧАТЕЛЯ */
+.theme-toggle {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: var(--title-color);
     color: white;
+    border: 3px solid var(--card-border);
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    font-size: 24px;
+    display: fle
+    x;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
 }
 
-/* Адаптив для мобил */
+.theme-toggle:hover {
+    transform: scale(1.1) rotate(15deg);
+}
+
+.theme-toggle:active {
+    transform: scale(0.9);
+}
+
+.download {
+    position:"fixed";
+    bottom: 25 px;
+    right: 500 px;
+    width: 500 px;
+    height: 70px;
+    border-radius: 0%;
+    background: var(--download-color);
+    color: white;
+    border: 3px solid var(--card-border);
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    font-size: 24px;
+    display: fle
+    x;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+
+
+
+/* МОБИЛЬНАЯ АДАПТАЦИЯ */
 @media (max-width: 600px) {
-    .glass-menu {
+    header {
         flex-direction: column;
+        text-align: center;
+    }
+    header img {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .glass-menu {
+        flex-wrap: wrap;
         gap: 10px;
     }
     .nav-btn {
-        width: 100%;
+        flex: 1 1 40%; /* Кнопки будут в два ряда на мобиле */
+        font-size: 0.9rem;
     }
 }
-/* Доработки для меню */
-.nav-btn:hover {
-    transform: scale(1.05); /* Кнопка чуть увеличивается при наведении */
-    background: #ffffff;
-}
-
-.nav-btn.active {
-    background: linear-gradient(to bottom, #0078d4 0%, #005a9e 100%);
-    color: white;
-    border-color: #004578;
-}
-
-.tg-btn {
-    border: 1px solid #24A1DE;
-    color: #24A1DE;
-}
-
-/* Стили для кнопок "Подробнее" внутри проектов */
+/* Кнопка "Подробнее" в карточках проектов */
 .more-btn {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 15px;
     text-decoration: none;
-    color: #0078d4;
     font-weight: bold;
-    border-bottom: 2px solid transparent;
-    transition: 0.3s;
+    color: var(--title-color);
+    border: 1px solid var(--title-color);
+    padding: 5px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 .more-btn:hover {
-    border-bottom: 2px solid #0078d4;
-    padding-left: 5px; /* Небольшой сдвиг для прикола */
+    background: var(--title-color);
+    color: #fff;
+    box-shadow: 0 0 10px var(--title-color);
 }
-
-/* Фикс для мобил, чтобы кнопки меню не слипались */
-@media (max-width: 600px) {
-    .glass-menu {
-        flex-direction: column;
-        align-items: stretch;
-    }
-  }

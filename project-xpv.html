@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows XPV - Подробности</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Дополнительные стили специально для страницы проекта */
+        .project-content {
+            text-align: left;
+        }
+        .project-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: #000; /* Цвет фона, пока картинка грузится */
+            display: block;
+        }
+        .feature-list {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--title-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo2.jpg" alt="Logo">
+        <div>
+            <h1>CubeWEB</h1>
+            <p>Сайт молодого разработчика</p>
+        </div>
+    </header>
+
+    <nav class="glass-menu">
+        <a href="index.html" class="nav-btn">Главная</a>
+        <a href="projects.html" class="nav-btn active">Проекты</a>
+        <a href="https://t.me/rttOSrtt" target="_blank" class="nav-btn tg-btn">Мой ТГК</a>
+        <a href="https://t.me/roman_tech_talk" target="_blank" class="nav-btn tg-btn">Личное сообщение</a>
+    </nav>
+
+    <main class="project-content">
+        <a href="projects.html" class="back-link">← Назад к проектам</a>
+
+        <section>
+            <h2>Windows XPV (Vista Edition)</h2>
+            <p>
+                <b>Windows XPV</b> — это не просто модификация, это попытка объединить стабильность легендарной Windows XP 
+                с эстетикой и визуальным превосходством Windows Vista. Проект нацелен на тех, кто ностальгирует по эпохе 
+                Frutiger Aero, но нуждается в быстрой и легкой системе.
+            </p>
+
+            <!-- Рис. 1 -->
+            <img src="xpv-screen1.png" alt="Рабочий стол Windows XPV" class="project-image">
+
+            <p>
+                Основное внимание уделено интерфейсу. Были проведены месяцы разработки, чтобы внедрить:
+            </p>
+            <ul class="feature-list">
+                <li>Полностью обновленные иконки Vista</li>
+                <li>Собственной темы оформления AeroBasic, соответствующей упрощенной схеме Windows Vista</li>
+                <li>Звуковую схему, полностью соответствующую оригинальной Windows Vista.</li>
+            </ul>
+
+            <!-- Рис. 2 -->
+            <img src="xpv-screen2.jpg" alt="Меню Пуск и окна" class="project-image">
+
+            <p>
+                Помимо внешнего вида, проведена глубокая оптимизация. Система включает в себя встроенные библиотеки для запуска софта, который 
+                обычно требует Windows Vista и вышe
+            </p>
+
+            <!-- Рис. 3 -->
+            <img src="xpv-screen3.jpg" alt="Системные настройки" class="project-image">
+
+            <p>
+                <b>Текущий статус:</b> Проект находится в стадии активной разработки. Идет работа над стабильностью 
+                и интеграцией современных браузеров, работающих корректно в 2026 году. 
+                Следите за новостями в моем ТГ-канале!
+            </p>
+        </section>
+    </main>
+    
+    <button class="download" id="download" title="Download(from internet-archive)">
+        <span href="https://drive.google.com/file/d/1ejFLwRcSOw7UpHuP1B27xTj1zWs9p0NJ/view?usp=sharing" id="download-icon"><p><b>⬇️ Скачать</b></p></span>
+        <p>(from Google Drive)</p>
+    </button>
+
+    <footer>
+        <p>Copyright © 2026 CubeWEB Lab. All rights reserved.</p>
+    </footer>
+
+    <!-- КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ -->
+    <button class="theme-toggle" id="theme-toggle" title="Сменить тему">
+        <span id="theme-icon">🌙</span>
+    </button>
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            htmlElement.setAttribute('data-theme', 'dark');
+            themeIcon.textContent = '☀️';
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            const isDark = htmlElement.hasAttribute('data-theme');
+            if (isDark) {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeIcon.textContent = '🌙';
+            } else {
+                htmlElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.textContent = '☀️';
+            }
+        });
+    </script>
+</body>
+</html>
