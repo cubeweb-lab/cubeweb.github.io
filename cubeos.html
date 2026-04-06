@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CubeOS - 64-bit операционная система</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .project-content {
+            text-align: left;
+        }
+        .project-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: #0a0e1a;
+            display: block;
+        }
+        .screenshot-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .screenshot-grid .project-image {
+            flex: 1;
+            min-width: 250px;
+            margin: 0;
+        }
+        .feature-list {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .feature-list li {
+            margin: 8px 0;
+        }
+        .code-block {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #00ff41;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        .badge {
+            display: inline-block;
+            background: #00ff41;
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .version-info {
+            background: linear-gradient(135deg, #0a0e1a, #0f1622);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--title-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover { text-decoration: underline; }
+        h3 {
+            margin-top: 25px;
+            color: var(--title-color);
+        }
+        hr {
+            border-color: var(--card-border);
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo2.jpg" alt="Logo">
+        <div>
+            <h1>CubeWEB</h1>
+            <p>Сайт молодого разработчика</p>
+        </div>
+    </header>
+
+    <nav class="glass-menu">
+        <a href="index.html" class="nav-btn">Главная</a>
+        <a href="projects.html" class="nav-btn active">Проекты</a>
+        <a href="https://t.me/rttOSrtt" target="_blank" class="nav-btn tg-btn">Мой ТГК</a>
+        <a href="https://t.me/roman_tech_talk" target="_blank" class="nav-btn tg-btn">Личное сообщение</a>
+    </nav>
+
+    <main class="project-content">
+        <a href="projects.html" class="back-link">← Назад к проектам</a>
+
+        <section>
+            <div class="version-info">
+                <span class="badge">Стабильный релиз</span>
+                <span class="badge">64-bit</span>
+                <h2 style="margin: 15px 0 5px 0;">CubeOS v0.4</h2>
+                <p style="color: #00ff41; font-size: 14px;">✓ Полностью рабочая версия</p>
+            </div>
+
+            <h2>🚀 CubeOS — 64-битная операционная система</h2>
+            <p>CubeOS — это моя собственная операционная система, написанная с нуля на NASM и Rust. Проект начинался как эксперимент, но вырос в полноценную 64-битную ОС с собственным трёхступенчатым загрузчиком, графическим интерфейсом и поддержкой файловой системы.</p>
+
+            <div class="screenshot-grid">
+                <img src="cubeos_shell.png" alt="CubeOS Shell" class="project-image" onerror="this.style.display='none'">
+                <img src="cubeos_gui.png" alt="CubeOS GUI" class="project-image" onerror="this.style.display='none'">
+            </div>
+
+            <h3>📋 Системные требования</h3>
+            <ul class="feature-list">
+                <li><strong>Процессор:</strong> x86_64 с поддержкой Long Mode</li>
+                <li><strong>Память:</strong> 8 МБ (минимум)</li>
+                <li><strong>Диск:</strong> 20 МБ свободного места</li>
+                <li><strong>Платформа:</strong> QEMU, VirtualBox, реальное железо (требуется UEFI/BIOS)</li>
+            </ul>
+
+            <h3>🎮 Команды шелла</h3>
+            <div class="code-block">
+                cls       — очистить экран<br>
+                help      — показать справку<br>
+                ver       — версия системы<br>
+                about     — информация об ОС + neofetch<br>
+                reboot    — перезагрузка<br>
+                shutdown  — выключение<br>
+                uptime    — время работы системы<br>
+                mem       — информация о памяти<br>
+                cpu       — информация о процессоре<br>
+                dice      — бросить кубик (1-6)<br>
+                flip      — орёл или решка<br>
+                gui       — запустить графический интерфейс
+            </div>
+
+            <h3>🖥️ Графический интерфейс (GUI)</h3>
+            <p>Псевдографический оконный менеджер в стиле Windows 3.11/95:</p>
+            <ul class="feature-list">
+                <li>✓ Окна с заголовками и рамками</li>
+                <li>✓ Перемещение окон стрелками клавиатуры</li>
+                <li>✓ Кнопка "Пуск" и меню</li>
+                <li>✓ Ярлыки на рабочем столе</li>
+                <li>✓ Выход по клавише ESC</li>
+            </ul>
+
+            
+
+            <h3>📂 Файловая система</h3>
+            <p>В разработке — поддержка FAT32 и собственной файловой системы CubeFS. На данный момент реализован каркас с возможностью чтения диска через ATA PIO драйвер.</p>
+
+            <div class="code-block">
+                cubeos> fat32     — инициализация FAT32<br>
+                cubeos> dir       — просмотр файлов (в разработке)
+            </div>
+
+            <h3>🛠️ Технологии</h3>
+            <ul class="feature-list">
+                <li><strong>Языки:</strong> NASM (ассемблер)</li>
+                <li><strong>Архитектура:</strong> 64-bit Long Mode</li>
+                <li><strong>Графика:</strong> VGA текстовый режим (80x25)</li>
+            </ul>
+
+            <h3>📥 Установка и запуск</h3>
+            <div class="code-block">
+                # 1. Скачать образ cubeos.img<br>
+                # 2. Запустить в QEMU:<br>
+                qemu-system-x86_64 -drive format=raw,file=cubeos.img -m 128M<br><br>
+                # Или в Limbo x86 на Android<br>
+                # Или записать на флешку через dd<br>
+                dd if=cubeos.img of=/dev/sdX bs=512
+            </div>
+
+            <h3>📊 Версии</h3>
+            <ul class="feature-list">
+                <li><strong>v0.4</strong> — Стабильная версия (рекомендуется)</li>
+                <li><strong>v0.5-dev</strong> — Разрабатываемая версия с ATA драйвером</li>
+                <li><strong>v0.6-dev</strong> — Экспериментальная версия с FAT32</li>
+            </ul>
+
+            <h3>🔧 Планы на будущее</h3>
+            <ul class="feature-list">
+                <li>✓ Полноценная поддержка FAT32 / CubeFS</li>
+                <li>✓ Свой ATA/IDE драйвер</li>
+                <li>✓ Графический режим VESA</li>
+                <li>✓ Мультизагрузка (Linux, Windows)</li>
+                <li>✓ Сетевой стек (планируется)</li>
+            </ul>
+
+            <hr>
+
+            <h3>📸 Скриншоты</h3>
+            <div class="screenshot-grid">
+                <img src="cubeos_neofetch.png" alt="Neofetch" class="project-image" onerror="this.style.display='none'">
+                <img src="cubeos_gui_window.png" alt="GUI окно" class="project-image" onerror="this.style.display='none'">
+            </div>
+
+            <h3>🔗 Ссылки</h3>
+            <ul class="feature-list">
+                <li><a href="https://t.me/rttOSrtt" target="_blank">Telegram канал</a></li>
+                
+            </ul>
+
+            <div class="version-info" style="margin-top: 30px;">
+                <p style="color: #888; font-size: 14px;">CubeOS — полностью домашняя разработка. Начало проекта: 27 января 2026 года.</p>
+                <p style="color: #00ff41; font-size: 12px; margin-top: 10px;">Made with ❤️ by CubeDev</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright © 2026 CubeWEB Lab. All rights reserved.</p>
+    </footer>
+
+    <button class="theme-toggle" id="theme-toggle" title="Сменить тему">
+        <span id="theme-icon">🌙</span>
+    </button>
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            htmlElement.setAttribute('data-theme', 'dark');
+            themeIcon.textContent = '☀️';
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            const isDark = htmlElement.hasAttribute('data-theme');
+            if (isDark) {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeIcon.textContent = '🌙';
+            } else {
+                htmlElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.textContent = '☀️';
+            }
+        });
+    </script>
+</body>
+</html>
