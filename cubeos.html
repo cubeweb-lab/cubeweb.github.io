@@ -3,84 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CubeOS - 64-bit операционная система</title>
+    <title>CubeOS v1.0 — 64-bit ОС на Rust</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .project-content {
-            text-align: left;
-        }
+        .project-content { text-align: left; }
         .project-image {
-            width: 100%;
-            max-width: 800px;
-            height: auto;
-            border-radius: 10px;
-            margin: 20px 0;
+            width: 100%; max-width: 800px; height: auto;
+            border-radius: 10px; margin: 20px 0;
             border: 1px solid var(--card-border);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            background: #0a0e1a;
-            display: block;
+            background: #0a0e1a; display: block;
         }
         .screenshot-grid {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin: 20px 0;
+            display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0;
         }
-        .screenshot-grid .project-image {
-            flex: 1;
-            min-width: 250px;
-            margin: 0;
-        }
-        .feature-list {
-            margin-left: 20px;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-        .feature-list li {
-            margin: 8px 0;
-        }
+        .screenshot-grid .project-image { flex: 1; min-width: 250px; margin: 0; }
+        .feature-list { margin-left: 20px; margin-bottom: 15px; line-height: 1.6; }
+        .feature-list li { margin: 8px 0; }
         .code-block {
-            background: var(--card-bg);
-            padding: 15px;
-            border-radius: 8px;
+            background: var(--card-bg); padding: 15px; border-radius: 8px;
             border-left: 4px solid #00ff41;
             font-family: 'Courier New', monospace;
-            overflow-x: auto;
-            margin: 15px 0;
+            overflow-x: auto; margin: 15px 0;
         }
         .badge {
-            display: inline-block;
-            background: #00ff41;
-            color: #000;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            margin-right: 10px;
+            display: inline-block; background: #00ff41; color: #000;
+            padding: 4px 12px; border-radius: 20px; font-size: 12px;
+            font-weight: bold; margin-right: 10px;
         }
+        .badge.warn { background: #ffb300; }
         .version-info {
             background: linear-gradient(135deg, #0a0e1a, #0f1622);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-            text-align: center;
+            padding: 20px; border-radius: 15px; margin: 20px 0; text-align: center;
         }
         .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: var(--title-color);
-            text-decoration: none;
-            font-weight: bold;
+            display: inline-block; margin-bottom: 20px;
+            color: var(--title-color); text-decoration: none; font-weight: bold;
         }
         .back-link:hover { text-decoration: underline; }
-        h3 {
-            margin-top: 25px;
-            color: var(--title-color);
+        h3 { margin-top: 25px; color: var(--title-color); }
+        hr { border-color: var(--card-border); margin: 20px 0; }
+        .table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        .table th, .table td {
+            border: 1px solid var(--card-border);
+            padding: 8px 12px; text-align: left;
         }
-        hr {
-            border-color: var(--card-border);
-            margin: 20px 0;
-        }
+        .table th { background: var(--card-bg); }
+        .status-ok   { color: #00ff41; }
+        .status-wip  { color: #ffb300; }
+        .status-todo { color: #ff5555; }
     </style>
 </head>
 <body>
@@ -104,95 +75,110 @@
 
         <section>
             <div class="version-info">
-                <span class="badge">Стабильный релиз</span>
+                <span class="badge">v1.0-dev</span>
                 <span class="badge">64-bit</span>
-                <h2 style="margin: 15px 0 5px 0;">CubeOS v0.4</h2>
-                <p style="color: #00ff41; font-size: 14px;">✓ Полностью рабочая версия</p>
+                <span class="badge">Rust + NASM</span>
+                <h2 style="margin: 15px 0 5px 0;">CubeOS v1.0</h2>
+                <p style="color: #00ff41; font-size: 14px;">
+                    ✓ Загрузка, Ring 3, syscall, FAT32, shell — работают
+                </p>
             </div>
 
-            <h2>🚀 CubeOS — 64-битная операционная система</h2>
-            <p>CubeOS — это моя собственная операционная система, написанная с нуля на NASM. Проект начинался как эксперимент, но вырос в полноценную 64-битную ОС с собственным трёхступенчатым загрузчиком, графическим интерфейсом и поддержкой файловой системы.</p>
+            <h2>🚀 CubeOS — 64-битная ОС с нуля</h2>
+            <p>
+                CubeOS — учебная 64-битная операционная система: собственный загрузчик,
+                переход в <strong>Long Mode</strong>, страничная адресация, обработка прерываний,
+                драйвер ATA PIO, файловая система <strong>FAT32</strong> и пользовательские
+                программы в <strong>Ring 3</strong>. Ядро написано на Rust (<code>no_std</code>),
+                загрузчик — на NASM.
+            </p>
 
             <div class="screenshot-grid">
                 <img src="cubeos_shell.png" alt="CubeOS Shell" class="project-image" onerror="this.style.display='none'">
-                <img src="cubeos_gui.png" alt="CubeOS GUI" class="project-image" onerror="this.style.display='none'">
+                <img src="cubeos_boot.png" alt="CubeOS Boot" class="project-image" onerror="this.style.display='none'">
             </div>
 
             <h3>📋 Системные требования</h3>
             <ul class="feature-list">
                 <li><strong>Процессор:</strong> x86_64 с поддержкой Long Mode</li>
-                <li><strong>Память:</strong> 8 МБ (минимум)</li>
-                <li><strong>Диск:</strong> 20 МБ свободного места</li>
-                <li><strong>Платформа:</strong> QEMU, VirtualBox, реальное железо (требуется UEFI/BIOS)</li>
+                <li><strong>Память:</strong> 32 МБ (минимум), рекомендуется 128 МБ</li>
+                <li><strong>Диск:</strong> 20 МБ (образ с FAT32-разделом)</li>
+                <li><strong>Платформа:</strong> QEMU (протестировано), Bochs, VirtualBox</li>
+                <li><strong>Загрузчик:</strong> Multiboot2 (GRUB / QEMU <code>-kernel</code>)</li>
             </ul>
 
-            <h3>🎮 Команды шелла</h3>
+            <h3>🏗️ Архитектура</h3>
+            <table class="table">
+                <tr><th>Слой</th><th>Что реализовано</th><th>Статус</th></tr>
+                <tr><td>Загрузчик (NASM)</td><td>Multiboot2, GDT64 + TSS, paging (identity 0..4 ГБ), переход в long mode</td><td class="status-ok">✓ Готово</td></tr>
+                <tr><td>Ядро (Rust, no_std)</td><td>Serial (COM1), VGA-текст, VESA framebuffer-логгер</td><td class="status-ok">✓ Готово</td></tr>
+                <tr><td>Память</td><td>Bitmap PMM, парсинг Multiboot2 memory map</td><td class="status-ok">✓ Готово</td></tr>
+                <tr><td>Прерывания</td><td>IDT (256), PIC remap, IRQ1 (клавиатура), ISR-заглушки</td><td class="status-ok">✓ Готово</td></tr>
+                <tr><td>Драйверы</td><td>ATA PIO (read/write sector, IDENTIFY)</td><td class="status-ok">✓ Готово</td></tr>
+                <tr><td>ФС</td><td>FAT32 (mount, read_file, list_dir, create, delete)</td><td class="status-ok">✓ Готово</td></tr>
+                <tr><td>ELF</td><td>Загрузка PT_LOAD сегментов, точка входа</td><td class="status-ok">✓ Готово</td></tr>
+                <tr><td>Ring 3</td><td>Переход в user mode, TSS.rsp0</td><td class="status-ok">✓ Готово</td></tr>
+                <tr><td>Syscall</td><td><code>syscall</code>/<code>sysret</code>, ABI: write/read/open/close/getdents/chdir/getcwd/mkdir/unlink/exit</td><td class="status-ok">✓ Готово</td></tr>
+                <tr><td>Shell</td><td><code>/bin/csh</code> в Ring 3</td><td class="status-ok">✓ Готово</td></tr>
+                <tr><td>Многозадачность</td><td>fork / exec / wait</td><td class="status-wip">🚧 В работе</td></tr>
+                <tr><td>Сеть</td><td>TCP/IP стек</td><td class="status-todo">⏳ План</td></tr>
+            </table>
+
+            <h3>🖥️ Shell (/bin/csh)</h3>
+            <p>Интерактивный шелл запускается как ELF-программа в Ring 3 и общается с ядром через <code>syscall</code>.</p>
             <div class="code-block">
-                cls       — очистить экран<br>
-                help      — показать справку<br>
-                ver       — версия системы<br>
-                about     — информация об ОС + neofetch<br>
-                reboot    — перезагрузка<br>
-                shutdown  — выключение<br>
-                uptime    — время работы системы<br>
-                mem       — информация о памяти<br>
-                cpu       — информация о процессоре<br>
-                dice      — бросить кубик (1-6)<br>
-                flip      — орёл или решка<br>
-                gui       — запустить графический интерфейс
+                ls [path]     — список файлов и каталогов<br>
+                cd [path]     — сменить текущий каталог<br>
+                pwd           — показать текущий путь<br>
+                cat &lt;file&gt;    — вывести содержимое файла<br>
+                mkdir &lt;path&gt;  — создать каталог<br>
+                rm &lt;path&gt;     — удалить файл<br>
+                echo &lt;text&gt;   — вывести текст<br>
+                help          — справка<br>
+                exit          — выход (возврат в ядро)
             </div>
 
-            <h3>🖥️ Графический интерфейс (GUI)</h3>
-            <p>Псевдографический оконный менеджер в стиле Windows 3.11/95:</p>
+            <h3>🧩 Стек технологий</h3>
             <ul class="feature-list">
-                <li>✓ Окна с заголовками и рамками</li>
-                <li>✓ Перемещение окон стрелками клавиатуры</li>
-                <li>✓ Кнопка "Пуск" и меню</li>
-                <li>✓ Ярлыки на рабочем столе</li>
-                <li>✓ Выход по клавише ESC</li>
+                <li><strong>Ядро:</strong> Rust (<code>no_std</code>, nightly, <code>build-std</code>)</li>
+                <li><strong>Загрузчик:</strong> NASM, Multiboot2</li>
+                <li><strong>Целевая архитектура:</strong> x86_64, Long Mode, identity paging 0..4 ГБ</li>
+                <li><strong>Драйверы:</strong> ATA PIO, COM1, VGA-текст, VESA framebuffer</li>
+                <li><strong>ФС:</strong> FAT32 (чтение/запись, 8.3, LFN-записи пока только читаются)</li>
+                <li><strong>ABI:</strong> System V AMD64 для syscall (rax=num, rdi/rsi/rdx/r10/r8/r9=args, rax=ret)</li>
+                <li><strong>Сборка:</strong> Makefile, <code>cargo +nightly build -Z build-std=core,compiler_builtins</code></li>
             </ul>
 
-            
-
-            <h3>📂 Файловая система</h3>
-            <p>В разработке — поддержка FAT32 и собственной файловой системы CubeFS. На данный момент реализован каркас с возможностью чтения диска через ATA PIO драйвер.</p>
-
+            <h3>📥 Сборка и запуск</h3>
             <div class="code-block">
-                cubeos> fat32     — инициализация FAT32<br>
-                cubeos> dir       — просмотр файлов (в разработке)
-            </div>
-
-            <h3>🛠️ Технологии</h3>
-            <ul class="feature-list">
-                <li><strong>Языки:</strong> NASM (ассемблер)</li>
-                <li><strong>Архитектура:</strong> 64-bit Long Mode</li>
-                <li><strong>Графика:</strong> VGA текстовый режим (80x25)</li>
-            </ul>
-
-            <h3>📥 Установка и запуск</h3>
-            <div class="code-block">
-                # 1. Скачать образ cubeos.img<br>
-                # 2. Запустить в QEMU:<br>
-                qemu-system-x86_64 -drive format=raw,file=cubeos.img -m 128M<br><br>
-                # Или в Limbo x86 на Android<br>
-                # Или записать на флешку через dd<br>
-                dd if=cubeos.img of=/dev/sdX bs=512
+                # 1. Собрать ядро<br>
+                make -j4<br><br>
+                # 2. Собрать шелл (/bin/csh)<br>
+                make csh -j4<br><br>
+                # 3. Собрать образ с FAT32 и положить csh в /bin/csh<br>
+                make image<br><br>
+                # 4. Запустить в QEMU<br>
+                qemu-system-x86_64 -drive format=raw,file=cubeos.img -m 128M -serial stdio<br><br>
+                # С отладкой исключений (полезно при разработке)<br>
+                qemu-system-x86_64 -drive format=raw,file=cubeos.img -m 128M \<br>
+                    -serial stdio -no-reboot -no-shutdown -d int,cpu_reset
             </div>
 
             <h3>📊 Версии</h3>
             <ul class="feature-list">
-                <li><strong>v0.4</strong> — Стабильная версия (рекомендуется)</li>
-                <li><strong>v0.5-dev</strong> — Разрабатываемая версия с ATA драйвером</li>
-                <li><strong>v0.6-dev</strong> — Экспериментальная версия с FAT32</li>
+                <li><strong>v1.0-dev</strong> — текущая ветка: Ring 3, syscall, FAT32, shell</li>
+                <li><strong>v0.6</strong> — первая версия с ATA PIO и загрузкой ELF</li>
+                <li><strong>v0.4</strong> — стабильная версия на NASM (VGA-текст, GUI-псевдографика)</li>
             </ul>
 
             <h3>🔧 Планы на будущее</h3>
             <ul class="feature-list">
-                <li>✓ Полноценная поддержка FAT32 / CubeFS</li>
-                <li>✓ Свой ATA/IDE драйвер</li>
-                <li>✓ Графический режим VESA</li>
-                <li>✓ Мультизагрузка (Linux, Windows)</li>
-                <li>✓ Сетевой стек (планируется)</li>
+                <li>🚧 <code>fork</code>/<code>exec</code>/<code>wait</code> — запуск программ из shell</li>
+                <li>🚧 Отдельное адресное пространство на процесс (сейчас identity 0..4 ГБ)</li>
+                <li>🚧 Запись LFN (сейчас только 8.3)</li>
+                <li>⏳ VESA-графика и оконный менеджер</li>
+                <li>⏳ Сетевой стек (e1000 / virtio-net)</li>
+                <li>⏳ Поддержка нескольких CPU (SMP)</li>
             </ul>
 
             <hr>
@@ -200,20 +186,22 @@
             <h3>📸 Скриншоты</h3>
             <div class="screenshot-grid">
                 <img src="cubeos_neofetch.png" alt="Neofetch" class="project-image" onerror="this.style.display='none'">
-                <img src="cubeos_gui_window.png" alt="GUI окно" class="project-image" onerror="this.style.display='none'">
+                <img src="cubeos_fat32.png" alt="FAT32 dir" class="project-image" onerror="this.style.display='none'">
             </div>
 
             <h3>🔗 Ссылки</h3>
             <ul class="feature-list">
                 <li><a href="https://t.me/rttOSrtt" target="_blank">Telegram канал</a></li>
-                <li><a href="https://disk.yandex.ru/d/xyfmS7OfaYtxXQ" target="_blank">Скачать CubeOS v0.5-dev</a></li>
-                <li><a href="https://disk.yandex.ru/d/357Px75FPwCeLg" target="_blank">Скачать CubeOS v0.4-stable</a></li>
-                
+                <li><a href="https://disk.yandex.ru/d/xyfmS7OfaYtxXQ" target="_blank">Скачать последний образ</a></li>
             </ul>
 
             <div class="version-info" style="margin-top: 30px;">
-                <p style="color: #888; font-size: 14px;">CubeOS — полностью домашняя разработка. Начало проекта: 27 января 2026 года.</p>
-                <p style="color: #00ff41; font-size: 12px; margin-top: 10px;">Made with ❤️ by CubeDev</p>
+                <p style="color: #888; font-size: 14px;">
+                    CubeOS — полностью домашняя разработка. Начало проекта: 27 января 2026 года.
+                </p>
+                <p style="color: #00ff41; font-size: 12px; margin-top: 10px;">
+                    Made with ❤️ by CubeDev
+                </p>
             </div>
         </section>
     </main>
